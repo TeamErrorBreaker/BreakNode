@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 03</title>
+</head>
+<body>
+    <h1>객체 리터럴!</h1>
+    <script>
+        var sayNode = function(){
+            console.log('Node');
+        };
+
+        var es = 'ES';
+        var oldObject = {
+            sayJS : function(){
+                console.log('JS');
+            },
+            sayNode : sayNode,
+        };
+        
+        oldObject[es + 6] = 'Fanstic';
+        oldObject.sayNode();
+        oldObject.sayJS();
+        
+        console.log(oldObject.ES6);
+        console.log(oldObject);
+
+        // 개선된 코드
+        const newObject = {
+            sayJS() {
+                console.log('JS2');
+            },
+            sayNode() {
+                console.log('Node2')
+            },
+            [es + 6] : 'Fantastic2',
+        };
+        newObject.sayJS();
+        newObject.sayNode();
+        console.log(newObject[es+6]);
+    </script>
+</body>
+</html>

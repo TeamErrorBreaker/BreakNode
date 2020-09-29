@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 02</title>
+</head>
+<body>
+    <h1>자바스크립트에서 백틱을 사용할 수 있게 되었다!</h1>
+    <p>
+        이제 백틱을 이용해서 문자열 내부에서 변수를 불러올 수 있게 되었다.
+        가독성이 훨씬 높아졌다고 볼 수 있다! ${} 안에 변수명을 넣으면 된다!
+    </p>
+    <script>
+        var num1 = 1;
+        var num2 = 2;
+        var result = 3;
+
+        var string1 = num1 + ' 더하기 ' + num2 + ' 는 \'' + result + '\'';
+        console.log(string1);
+
+        // 위의 코드가 백틱의 사용으로 + 구문 없이 문자열 내에서 연산이 가능하게 되었다.
+        const num3 = 3;
+        const num4 = 4;
+        var result2 = 7;
+        const string2 = `${num3} 더하기 ${num4} 는 '${result2}'`;
+        console.log(string2)
+    </script>
+</body>
+</html>

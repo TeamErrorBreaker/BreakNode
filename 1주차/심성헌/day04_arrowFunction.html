@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 04</title>
+</head>
+<body>
+    <h1>화살표 함수! 화살표를 이용해서 다양하게 표현해보자^^</h1>
+    <script>
+        function add1(x, y){
+            return x + y;
+        };
+
+        const add2 = (x, y) => {
+            return x + y;
+        };
+
+        const add3 = (x, y) => x + y;
+
+        const add4 = (x, y) => (x + y);
+
+        console.log(`add1() : ${add1(1,2)}`);
+        console.log(`add2() : ${add2(3, 4)}`);
+        console.log(`add3() : ${add3(5, 6)}`);
+        console.log(`add4() : ${add4(7, 8)}`);
+
+        function not1(x) {
+            return !x;
+        };
+
+        const not2 = (x) => !x;
+
+        console.log(`not1() : ${not1(false)}`);
+        console.log(`not2() : ${not2(true)}`);
+
+        // this 바인딩
+        var relationship1 = {
+            name : 'zero',
+            friends : ['one','two','three'],
+            logFriends : function() {
+                var that = this;
+                this.friends.forEach(function(friend) {
+                    console.log(that.name, friend);
+                })
+            }
+        }
+        relationship1.logFriends();
+        console.log(relationship1);
+
+        // 화살표 함수를 이용해서 더 간략하게 가독성을 띄워보자!
+        const relationship2 = {
+            name : 'zero',
+            friends : ['four','five','six'],
+            logFriends(){
+                this.friends.forEach(friend => {
+                    console.log(this.name, friend);
+                })
+            }
+        }
+        relationship2.logFriends();
+        console.log(relationship2);
+    </script>
+</body>
+</html>

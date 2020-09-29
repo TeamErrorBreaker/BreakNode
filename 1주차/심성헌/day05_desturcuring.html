@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 05</title>
+</head>
+<body>
+    <h1>구조 분해 할당!!!</h1>
+    <script>
+        // var candyMachine = {
+        //     status : {
+        //         name : 'node',
+        //         count : 5,
+        //     },
+        //     getCandy(){
+        //         this.status.count--;
+        //         return this.status.count;
+        //     },
+        // };
+        // var getCandy = candyMachine.getCandy();
+        // var count = candyMachine.status.count;
+        // console.log(getCandy);
+        // console.log(count);
+
+        // 이렇게 바뀔 수도 있다! 구조 분해 할당에 의해서!
+        // 구조 분해 할당을 사용하면 객체와 배열로부터 속성이나 요소를 쉽게 꺼낼 수 있다!
+        const candyMachine = {
+            status : {
+                name : 'node',
+                count : 5,
+            },
+            getCandy() {
+                this.status.count--;
+                return this.status.count;
+            }
+        };
+        // 변수를 오브젝트 객체 자체로 선언
+        const {getCandy, status:{count}} = candyMachine;
+        console.log(candyMachine.getCandy())
+        console.log({count})
+        console.log({getCandy})
+
+        // 배열에서의 구조분해 할당!
+        var array = ['node',10,{},true];
+        var node = array[0];
+        var num = array[1];
+        var obj = array[2];
+        var bool = array[3];
+        console.log(node, num, obj, bool);
+
+        const array1 = ['node2', 15, {}, false];
+        // 변수를 배열 객체 자체로 선언
+        var [node, num, obj, bool] = array1;
+        console.log(node, num, obj, bool)
+        console.log(node)
+
+        // 구조분해 할당이란?
+        /*
+            객체 안의 속성을 찾아서 변수와 매칭한다.
+            candyMachine 에서의 count 처럼 여러 단계 안의 속성도 찾을 수 있다.
+            단, 구조분해 할당을 사용하면 this 의 시점이 달라질 수 있기에 
+            bind 함수를 사용해서 시점을 맞춰주어야 한다!
+        */
+    </script>
+</body>
+</html>

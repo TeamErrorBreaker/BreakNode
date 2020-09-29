@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 01</title>
+</head>
+<body>
+    <h1>const, let</h1>
+    <script>
+
+        // var 변수
+        var a = 10;
+        if(true) {
+            a = 20;
+        };
+        console.log(a);
+
+        // const 변수(if, while, for 문 등)
+        // 블록 스코프를 가지기에 블록 스코프 외부에서는 접근할 수 없다.
+        // 상수로 자주 사용한다. 왜냐면 같은 스코프 내에서도 데이터 값을 변경할 수 없다.
+        if(true) {
+            const b = 100;
+            // b = 101;
+            console.log(b);
+        };
+
+        // let 변수
+        // let 타입은 같은 스코프 내에서 변화될 수 있다.
+        if(true) {
+            let c = 10;
+            c = 11;
+            console.log(c);
+        }
+    </script>
+</body>
+</html>

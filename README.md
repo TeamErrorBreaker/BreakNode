@@ -8,12 +8,12 @@ Full-Stack 개발자로 향하는 것을 목표로 한다!
 ---
 
 ## 🧑‍💻 참여자
-- **[김연훈]()**
-- **[김진영]()**
-- **[김혜정](https://github.com/hjikm11)**
-- **[심성헌](https://github.com/dip0cean)**
-- **[이주용](https://github.com/juyong2)**
-- **[정연재](https://github.com/duswo5310)**
+- **[🐶김연훈]()**
+- **[🐣김진영]()**
+- **[🐰김혜정](https://github.com/hjikm11)**
+- **[🐳심성헌](https://github.com/dip0cean)**
+- **[🐨이주용](https://github.com/juyong2)**
+- **[🐹정연재](https://github.com/duswo5310)**
 
 ### 📌 목표
 

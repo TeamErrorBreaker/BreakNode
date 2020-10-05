@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 06</title>
+</head>
+<body>
+    <h1>자바스크립트에서도 클래스를 이용하여 코드를 작성할 수 있다..?</h1>
+    <h2>단, 자바처럼 클래스 기반으로 동작하는 것이 아니라 여전히 프로토 타입 기반으로 동작한다.</h2>
+    <p>그저 프로토타입 기반 문법을 클래스 형식으로 보기 좋게 바꾼 것이다!</p>
+ 
+    <!-- Prototype에 대한 이해 -->
+    <script>
+        // Dog 라는 함수를 만들고 
+        // 해당 함수가 eyes(눈), nose(코)라는 속성으로 구성되어 있음을 선언한다.
+        function Dog() {
+            this.eyes = 2;
+            this.nose = 1;
+        }
+
+        // 또익이와 꼬망이는 Dog 라는 함수를 상속받아 Dog 라는 것을 명시한다.
+        var 또익이 = new Dog();
+        var 꼬망이 = new Dog();
+
+        console.log(또익이.eyes); // 또익이의 눈은 2개이다. Dog 함수의 eyes 속성을 상속받기 때문이다.
+        console.log(꼬망이.nose); // 꼬망이의 코는 1개이다. Dog 함수의 nose 속성을 상속받기 때문이다.
+    </script>
+    <script>
+        function Dog(){}
+
+        Dog.prototype.eyes = 2;
+        Dog.prototype.nose = 1;
+
+        var 또익이 = new Dog();
+        var 꼬망이 = new Dog();
+
+        console.log(또익이.eyes);
+        console.log(꼬망이.nose);
+
+    </script>
+    
+    <!-- Class에 대한 이해 -->
+    <script>
+        // Prototype을 이용해 상속 개념 이해하기
+        // Human 함수 생성
+        var Human = function(type) {
+            this.type = type || 'human';
+        }
+
+        Human.isHuman = function(human) {
+            return human instanceof Human;
+        }
+
+        // Human()을 참조하여 생성될 객체에 부여할 속성 선언
+        Human.prototype.breathe = function() {
+            alert('h-a-a-a-m');
+        }
+
+        // Human()를 참조받아 새로운 객체 생성
+        var sh = function(type, firstName, lastName) {
+            Human.apply(this.arguments);
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+
+        // 위에서 Human() 함수를 참조받아 만들어진 객체의 기본 속성 설정
+        sh.prototype = Object.create(Human.prototype); // Human() 함수의 속성을 불러와 설정한다.
+        sh.prototype.constructor = sh; // 생성자는 sh
+        sh.prototype.sayName = function() {
+            alert(this.firstName + ' ' + this.lastName);
+        } // sh 객체에 sayName 이라는 함수를 추가한다.
+
+        var oldSh = new sh('human','SeongHeon','Sim');
+        Human.isHuman(oldSh);
+        console.log(Human.isHuman(oldSh))
+        // 위의 코드에서 Human 생성자 함수가 있고, 그 함수를 Zero 생성자 함수가 상속한다.
+        // sh 생성자 함수를 보면 상송받기 위한 코드가 상당히 난해한데, Human.apply 와 Object.create 부분이 상속받으면서 복잡해졌다.
+    </script>
+    <script>
+        // Class를 이용해 상속 개념 이해하기
+        // 클래스 선언
+        class Person{
+            // Person 클래스의 생성자 선언
+            constructor(type = 'person'){
+                this.type = type;
+            }
+            
+            // 정적 메소드 생성
+            static isPerson(person) {
+                return person instanceof Person;
+            }
+
+            // 숨쉬는 메소드 생성
+            breathe() {
+                alert("하-아-아-암");
+            }
+        }
+
+        // Person 클래스를 상속받는 Ssh 클래스 생성
+        class Ssh extends Person {
+
+            // 상속받은 Person 클래스의 생성자를 불러와 Ssh 인스턴스 변수값 설정
+            constructor(type, firstName, lastName) {
+                super(type);
+                this.firstName = firstName;
+                this.lastName = lastName;
+            }
+
+            // Ssh 클래스에 sayName() 함수를 만들어, 
+            // 해당 함수에 Person 클래스의 breathe() 함수 삽입
+            sayName() {
+                super.breathe();
+                alert(`${this.firstName} ${this.lastName}`);
+            }
+        }
+
+        // newSsh 객체를 Ssh 클래스를 이용해 생성
+        const newSsh = new Ssh('person','SeongHeon', 'Sim');
+        Person.isPerson(newSsh);
+    </script>
+</body>
+</html>
